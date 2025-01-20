@@ -6,4 +6,12 @@ export const useAuthUserStore = defineStore("authuser", {
       username: "Alice",
     };
   },
+  getters: {
+    length: (state) => state.username.length,
+  },
+  actions: {
+    showAlert: (name) => {
+      alert(`Hello ${name}`);
+    },
+  },
 });

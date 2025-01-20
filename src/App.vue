@@ -1,14 +1,18 @@
-<script setup>
-import { useProductStore } from "@/stores/productStore";
+<template>
+  <div>
+    <input type="text" v-model="username">
+    <pre>{{ username }}</pre>
+  </div>
+</template>
+
+<script>
 import { useAuthUserStore } from "@/stores/authUserStore"
-import { storeToRefs } from "pinia";
-
-const { username } = storeToRefs(useAuthUserStore())
-
-const { products } = storeToRefs(useProductStore());
+import { mapWritableState } from "pinia";
+export default {
+  computed: {
+    ...mapWritableState(useAuthUserStore, ['username'])
+  }
+}
 </script>
 
-<template>
-  <pre>{{ products }}</pre>
-  <pre>{{ username }}</pre>
-</template>
+<style lang="scss" scoped></style>
